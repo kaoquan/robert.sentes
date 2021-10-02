@@ -1,2 +1,2 @@
 # robert.sentes.eu
-robert.sentes.eu personal website
+Personal Website of Robert Sentes
