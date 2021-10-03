@@ -1,2 +1,2 @@
 # robert.sentes.eu
-Personal Website of Robert Sentes
+Personal Website of Robert Senteș
