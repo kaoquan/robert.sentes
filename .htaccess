@@ -1,5 +1,4 @@
-
-RewriteBase /
-RewriteCond %{REQUEST_URI} !/under-construction.html$ [NC]
-RewriteCond %{REQUEST_URI} !\.(jpe?g?|png|svg|icon|css|js|webmanifest) [NC]
-RewriteRule (.*) https://%{HTTP_HOST}/under-construction.html [L,R=302]
+# RewriteBase /
+# RewriteCond %{REQUEST_URI} !/under-construction.html$ [NC]
+# RewriteCond %{REQUEST_URI} !\.(jpe?g?|png|svg|icon|css|js|webmanifest) [NC]
+# RewriteRule (.*) https://%{HTTP_HOST}/under-construction.html [L,R=302]
