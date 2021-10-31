@@ -398,17 +398,42 @@ template {
 [hidden] {
   display: none; }
 
+:root {
+  --color-bg: #0D1321;
+  --color-text: #FFFFFF; }
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0D1321;
+    --color-text: #FFFFFF; } }
+
+@media screen and (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #FFFFFF;
+    --color-text: #0D1321; } }
+
+[data-color-scheme="dark"] {
+  --color-bg: #0D1321;
+  --color-text: #FFFFFF; }
+
+[data-color-scheme="light"] {
+  --color-bg: #FFFFFF;
+  --color-text: #0D1321; }
+
 body,
 html {
   margin: 0;
   padding: 0;
-  background: #F3F0F2;
-  color: #302928;
+  height: 100%;
+  position: relative;
+  background: var(--color-bg);
+  color: var(--color-text);
   font-style: normal;
   font-family: 'Ubuntu', sans-serif;
   font-weight: normal;
   font-size: 16px;
-  line-height: 20px; }
+  line-height: 20px;
+  transition: all 0.3s; }
 
 * {
   box-sizing: border-box; }
@@ -434,13 +459,13 @@ h1 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 56px;
-  line-height: 66px; }
+  line-height: 70px; }
 
 h2 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 44px;
-  line-height: 54px; }
+  line-height: 52px; }
 
 h3 {
   font-family: 'Ubuntu', sans-serif;
@@ -452,19 +477,19 @@ h4 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 32px;
-  line-height: 42px; }
+  line-height: 40px; }
 
 h5 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 26px;
-  line-height: 34px; }
+  line-height: 32px; }
 
 h6 {
   font-family: 'Ubuntu', sans-serif;
   font-weight: bold;
   font-size: 22px;
-  line-height: 28px; }
+  line-height: 26px; }
 
 h1,
 h2,
@@ -474,6 +499,47 @@ h5,
 h6,
 p {
   margin: 0; }
+
+.color-scheme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px; }
+  .color-scheme-toggle__slider {
+    cursor: pointer;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-text);
+    border-radius: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; }
+    .color-scheme-toggle__slider::after {
+      content: '';
+      width: 26px;
+      height: 26px;
+      border-radius: 24px;
+      background-color: var(--color-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateX(0);
+      transition: transform 0.3s; }
+  .color-scheme-toggle__checkbox {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute; }
+  .color-scheme-toggle__checkbox:checked + .color-scheme-toggle__slider::after {
+    transform: translateX(100%); }
+  .color-scheme-toggle__icon {
+    line-height: 0;
+    border-radius: 24px; }
+    .color-scheme-toggle__icon svg {
+      padding: 2px;
+      width: 24px;
+      height: 24px;
+      fill: var(--color-text); }
+  .no-js .color-scheme-toggle {
+    display: none; }
 
 .fade-in-up {
   will-change: opacity, transform;
@@ -506,7 +572,25 @@ p {
     opacity: 1;
     transform: translateY(0); } }
 
-#laughing_man_text {
+#circuit-1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--color-text);
+  opacity: 0.7; }
+
+.laughing-man__bg {
+  /* fill: $color-text;
+
+        path {
+            fill: $color-text;
+        } */ }
+
+.laughing-man__text {
   will-change: transform;
   transform-origin: 261px 261px;
   animation: text-rotate 20s linear infinite; }
@@ -523,8 +607,7 @@ p {
   justify-content: center;
   text-align: center;
   min-height: 100vh;
-  max-width: 840px;
-  color: #23498C; }
+  max-width: 840px; }
   .under-construction__container {
     width: 100%;
     height: 100%;
@@ -539,19 +622,19 @@ p {
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 32px;
-    line-height: 42px; }
+    line-height: 40px; }
     @media (min-width: 768px) {
       .under-construction__name {
         font-family: 'Ubuntu', sans-serif;
         font-weight: bold;
         font-size: 44px;
-        line-height: 54px; } }
+        line-height: 52px; } }
     @media (min-width: 1024px) {
       .under-construction__name {
         font-family: 'Ubuntu', sans-serif;
         font-weight: bold;
         font-size: 56px;
-        line-height: 66px; } }
+        line-height: 70px; } }
   .under-construction__specialization {
     font-family: 'Ubuntu', sans-serif;
     font-weight: normal;
@@ -561,4 +644,4 @@ p {
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 22px;
-    line-height: 28px; }
+    line-height: 26px; }
