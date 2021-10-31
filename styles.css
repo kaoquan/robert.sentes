@@ -588,16 +588,70 @@ p {
     stroke: var(--color-bg);
     stroke-linecap: round;
     stroke-width: 3px; }
-  .circuit--green path {
-    stroke: #4DAC02; }
-  .circuit--glow path {
-    stroke-opacity: 0.5; }
-  .circuit--transparent path {
-    stroke-opacity: 0.7; }
-  .circuit--thick path {
+  .circuit--01 path {
+    animation: curcuit-01 1s;
+    stroke: var(--color-text); }
+  .circuit--02 path {
+    animation: curcuit-02 1s;
+    stroke: #4DAC02;
+    stroke-opacity: 0.5;
+    stroke-width: 6px; }
+  .circuit--03 path {
+    animation: curcuit-03 1s;
+    stroke: #4DAC02;
+    stroke-opacity: 0;
+    transform: rotateX(-180deg) translateY(-100%); }
+  .circuit--04 path {
+    animation: curcuit-04 1s;
+    stroke-opacity: 0.7;
     stroke-width: 9px; }
-  .circuit--thicker path {
+  .circuit--05 path {
+    animation: curcuit-05 1s;
+    stroke-opacity: 0.5;
     stroke-width: 15px; }
+
+@keyframes curcuit-01 {
+  0% {
+    stroke-width: 3px; }
+  25% {
+    stroke-width: 6px; }
+  100% {
+    stroke-width: 3px;
+    stroke-opacity: 0.2; } }
+
+@keyframes curcuit-02 {
+  0% {
+    stroke-opacity: 0.5; }
+  50% {
+    stroke-opacity: 0.3; }
+  100% {
+    stroke-opacity: 0.2; } }
+
+@keyframes curcuit-03 {
+  0% {
+    stroke-width: 3px;
+    stroke-opacity: 0; }
+  50% {
+    stroke-width: 6px;
+    stroke-opacity: 0.3; }
+  100% {
+    stroke-width: 3px;
+    stroke-opacity: 0; } }
+
+@keyframes curcuit-04 {
+  50% {
+    stroke: var(--color-bg); }
+  75% {
+    stroke-width: 6px;
+    stroke: var(--color-text); }
+  100% {
+    stroke: var(--color-bg); } }
+
+@keyframes curcuit-05 {
+  50% { }
+  75% {
+    stroke-width: 9px; }
+  100% { } }
 
 .laughing-man__bg {
   /* fill: $color-text;
@@ -622,7 +676,7 @@ p {
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 100vh;
+  min-height: 100%;
   max-width: 840px; }
   .under-construction__container {
     width: 100%;
