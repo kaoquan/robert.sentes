@@ -412,8 +412,8 @@ template {
 @media screen and (prefers-color-scheme: light) {
   :root {
     --color-bg: #FFFFFF;
-    --color-text: #363c4b;
-    --color-primary: #4DAC02; } }
+    --color-text: #1a1f2b;
+    --color-primary: #7a9bf5; } }
 
 [data-color-scheme="dark"] {
   --color-bg: #0D1321;
@@ -422,8 +422,8 @@ template {
 
 [data-color-scheme="light"] {
   --color-bg: #FFFFFF;
-  --color-text: #363c4b;
-  --color-primary: #4DAC02; }
+  --color-text: #1a1f2b;
+  --color-primary: #7a9bf5; }
 
 body,
 html {
@@ -575,10 +575,10 @@ p {
     animation-delay: 1.8s; }
 
 @keyframes content-fade-in {
-  from {
+  0% {
     opacity: 0;
     transform: translateY(30px); }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0); } }
 
@@ -600,7 +600,7 @@ p {
   height: 30vh;
   background-color: var(--color-text);
   border-radius: 9px;
-  box-shadow: 0 0 18px 9px rgba(var(--color-primary), 0.7);
+  box-shadow: 0 0 1vh 0.5vh var(--color-primary);
   opacity: 0; }
 
 @keyframes chip-circuit {
@@ -615,10 +615,13 @@ p {
   50% {
     opacity: 0; }
   55% {
-    opacity: 1; }
+    opacity: 1;
+    box-shadow: 0 0 1vh 0.5vh var(--color-primary); }
   65% {
-    opacity: 1; }
+    opacity: 1;
+    box-shadow: 0 0 3vh 1vh var(--color-primary); }
   75% {
+    box-shadow: 0 0 1vh 0.5vh var(--color-primary);
     opacity: 0; } }
 
 .circuit-mask {
@@ -659,7 +662,7 @@ p {
 @keyframes circuit-mask {
   0% {
     opacity: 0; }
-  35% {
+  40% {
     opacity: 0; }
   50% {
     opacity: 0.7; }
@@ -756,22 +759,38 @@ p {
   right: 0;
   width: 100%;
   height: 100%; }
-  .circuit-foreground__main-lines path {
-    animation-name: curcuit-foreground-main-lines;
-    animation-duration: 3s;
-    stroke: var(--color-bg);
-    stroke-opacity: 0.6;
-    stroke-width: 3px; }
-    .circuit-foreground__main-lines path.fill {
-      animation-name: curcuit-foreground-main-fill;
+  .circuit-foreground__main-lines {
+    animation-name: curcuit-foreground-main-opacity;
+    animation-duration: 3s; }
+    .circuit-foreground__main-lines path {
+      animation-name: curcuit-foreground-main-lines;
       animation-duration: 3s;
-      fill: var(--color-bg); }
-  .circuit-foreground__main-glow path {
-    stroke: var(--color-bg);
-    stroke-opacity: 0.4;
-    stroke-width: 6px; }
-    .circuit-foreground__main-glow path.fill {
-      fill: var(--color-bg); }
+      stroke: var(--color-bg);
+      stroke-opacity: 0.6;
+      stroke-width: 3px; }
+      .circuit-foreground__main-lines path.fill {
+        animation-name: curcuit-foreground-main-fill;
+        animation-duration: 3s;
+        fill: var(--color-bg); }
+  .circuit-foreground__main-glow {
+    animation-name: curcuit-foreground-main-opacity;
+    animation-duration: 3s; }
+    .circuit-foreground__main-glow path {
+      animation-name: curcuit-foreground-main-glow;
+      animation-duration: 3s;
+      stroke: var(--color-bg);
+      stroke-opacity: 0.4;
+      stroke-width: 6px; }
+      .circuit-foreground__main-glow path.fill {
+        fill: var(--color-bg); }
+
+@keyframes curcuit-foreground-main-opacity {
+  0% {
+    opacity: 0; }
+  28% {
+    opacity: 0; }
+  40% {
+    opacity: 1; } }
 
 @keyframes curcuit-foreground-main-lines {
   0% {
@@ -796,6 +815,37 @@ p {
   50% {
     fill: var(--color-bg); } }
 
+@keyframes curcuit-foreground-main-glow {
+  0% {
+    stroke-opacity: 0; }
+  28% {
+    stroke-opacity: 0; }
+  40% {
+    stroke-opacity: 0.9; }
+  50% {
+    stroke-opacity: 0.4; } }
+
+.intro-animation {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+  .intro-animation__zoom {
+    width: 100%;
+    height: 100%;
+    animation-name: intro-animation;
+    animation-duration: 3s; }
+
+@keyframes intro-animation {
+  0% {
+    transform: scale(1.02); }
+  100% {
+    transform: scale(1); } }
+
 .laughing-man__bg {
   /* fill: $color-text;
 
@@ -809,9 +859,9 @@ p {
   animation: text-rotate 20s linear infinite; }
 
 @keyframes text-rotate {
-  from {
+  0% {
     transform: rotate(359.9deg); }
-  to {
+  100% {
     transform: rotate(0deg); } }
 
 .under-construction {
