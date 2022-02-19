@@ -1,1 +1,2 @@
-document.addEventListener("DOMContentLoaded",function(){document.body.classList.remove("no-js")});
+class colorSchemeToggle{constructor(e){this.toogle=document.querySelector(e),this.detectColorScheme(),this.toogle.addEventListener("change",this.switchTheme,!1)}switchTheme(e){let t="dark";e.target.checked&&(t="light"),localStorage.setItem("color-scheme",t)}detectColorScheme(){let e="dark";localStorage.getItem("color-scheme")&&"light"==localStorage.getItem("color-scheme")&&(e="light"),"light"==e&&(this.toogle.checked=!0)}}
+document.addEventListener("DOMContentLoaded",function(){document.body.classList.remove("no-js"),new colorSchemeToggle(".js-color_scheme_toggle")});
