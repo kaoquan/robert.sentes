@@ -2,7 +2,7 @@
     "name": "Senteș Robert web devbeloper - personal website",
     "short_name": "Senteș Robert",
     "description": "Personal website of web developer Senteș Robert. Fun project inspired by Ghost in the Shell to create a static web page with pure HTML and CSS.",
-    "start_url": "https://robert.sentes.eu/",
+    "start_url": "/",
     "icons": [
         {
             "src": "android-chrome-192x192.png",
