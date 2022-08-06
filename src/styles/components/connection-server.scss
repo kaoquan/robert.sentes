@@ -1,0 +1,50 @@
+.connection-server {
+    z-index: 1;
+    position: absolute;
+    top: calc(#{$server-y-sm} + #{$server-size-sm / 2});
+    right: $server-x-sm;
+
+    transform: translate(80%, 0%) rotateX(10deg);
+    width: 14%;
+    height: calc(#{$server-racks-y-sm - $server-y-sm} - #{$server-size-sm});
+
+    animation-name: connection-server;
+    animation-delay: $intro-server-delay + $intro-server-duration / 2;
+    animation-duration: $intro-server-duration;
+    animation-fill-mode: both;
+
+    @include media('md') {
+        top: calc(#{$server-y-sm} + #{$server-size-md / 2});
+        height: calc(#{$server-racks-y-sm - $server-y-sm} - #{$server-size-md});
+    }
+
+    @include media('lg') {
+        top: calc(#{$server-y-lg} + #{$server-size-lg / 2});
+        right: $server-x-lg;
+        width: 7%;
+        height: calc(#{$server-racks-y-lg - $server-y-lg} - #{$server-size-lg});
+    }
+
+    &__line {
+        stroke: $color-circuit;
+        stroke-width: $stroke-width-3;
+        stroke-opacity: $stroke-opacity;
+        stroke-linecap: round;
+    }
+    &__rectangle {
+        fill: $color-circuit;
+        fill-opacity: $stroke-opacity;
+    }
+}
+
+@keyframes connection-server  {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: $object-opacity;
+    }
+    100% {
+        opacity: $connection-opacity;
+    }
+}

@@ -1,0 +1,15 @@
+.object {
+    opacity: $object-opacity;
+    z-index: 5;
+
+    &:hover,
+    &:focus-within {
+        opacity: 1;
+    }
+
+    &--on-top:hover,
+    &--on-top:focus-within {
+        opacity: 1;
+        z-index: 11;
+    }
+}

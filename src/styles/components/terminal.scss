@@ -1,0 +1,366 @@
+.terminal {
+    $terminal: &;
+    --terminal-top: #{$terminal-y-sm};
+    --terminal-left: #{$terminal-x-sm};
+    --terminal-rotateX: 30deg;
+    --terminal-rotateY: 0deg;
+    position: absolute;
+    top: var(--terminal-top);
+    left: var(--terminal-left);
+    transform: translate(-50%, -50%) rotateX(var(--terminal-rotateX)) rotateY(var(--terminal-rotateY));
+
+    width: 100%;
+    height: 100%;
+    max-width: $terminal-size-sm;
+    max-height: $terminal-size-sm;
+
+    animation-name: terminal-loading;
+    animation-delay: $intro-terminal-delay;
+    animation-duration: $intro-terminal-duration;
+
+    @include media('md') {
+        max-width: #{$terminal-size-md};
+        max-height: #{$terminal-size-md};
+    }
+
+    @include media('lg') {
+        --terminal-top: #{$terminal-y-lg};
+        --terminal-left: #{$terminal-x-lg};
+        --terminal-rotateX: 0deg;
+        --terminal-rotateY: 65deg;
+
+        max-width: $terminal-size-lg;
+        max-height: $terminal-size-lg;
+    }
+
+    &:hover,
+    &:focus-within {
+        transform: translate(-50%, -50%);
+
+        #{$terminal}__fade-container-1 {
+            left: 0;
+            bottom: 0;
+            transform: scale(1.05);
+        }
+        #{$terminal}__fade-container-2 {
+            left: 0;
+            bottom: 0;
+            transform: scale(1);
+        }
+    }
+
+
+
+    &__main {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__fade-container-1 {
+        --fade-left-1: 0%;
+        --fade-bottom-1: -5%;
+        position: absolute;
+        top: 0;
+        bottom: var(--fade-bottom-1);
+        left: var(--fade-left-1);
+        right: 0;
+        width: 100%;
+        height: 100%;
+
+        transform: scale(1.2);
+
+        animation-name: terminal-fade-1-loading;
+        animation-delay: $intro-terminal-delay + $intro-terminal-duration / 2;
+        animation-duration: $intro-terminal-duration /2;
+        animation-fill-mode: none;
+
+        @include media('lg') {
+            --fade-left-1: -5%;
+            --fade-bottom-1: 0%;
+        }
+    }
+
+    &__fade-1 {
+        width: 100%;
+        opacity: 0.4;
+
+        animation-name: terminal-fade-rotate;
+        animation-duration: 25s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+
+        path {
+            fill: $color-text;
+        }
+    }
+
+    &__fade-container-2 {
+        --fade-left-2: 0%;
+        --fade-bottom-2: -3%;
+        position: absolute;
+        top: 0;
+        bottom: var(--fade-bottom-2);
+        left: var(--fade-left-2);
+        right: 0;
+        width: 100%;
+        height: 100%;
+
+        transform: scale(1.1);
+
+        animation-name: terminal-fade-2-loading;
+        animation-delay: $intro-terminal-delay + $intro-terminal-duration / 2;
+        animation-duration: $intro-terminal-duration /2;
+        animation-fill-mode: none;
+
+        @include media('lg') {
+            --fade-left-2: -3%;
+            --fade-bottom-2: 0%;
+        }
+    }
+
+    &__fade-2 {
+        width: 100%;
+        opacity: 0.6;
+
+        animation-name: terminal-fade-rotate;
+        animation-duration: 15s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+
+        path {
+            fill: $color-text;
+        }
+    }
+
+    &__circle {
+        fill: $color-light;
+    }
+
+    &__border {
+        stroke: $color-dark;
+    }
+
+    &__rectangle {
+        fill: $color-dark;
+
+        &--hover:hover {
+            fill: $color-neon;
+        }
+    }
+
+    &__status {
+        fill: $color-laughing-man;
+    }
+
+    &__online {
+        fill: $color-light;
+    }
+
+    &__background {
+        fill: $color-blue-1;
+    }
+
+    &__background-line {
+        fill: $color-blue-2;
+    }
+
+    &__avatar {
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        padding: 22%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        clip-path: url(#terminal-background);
+	    object-fit: cover;
+        text-align: center;
+        cursor: pointer;
+        overflow: hidden;
+
+        img {
+            max-height: 100%;
+            width: auto;
+        }
+    }
+
+    &__name {
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        @include get-typo("h3");
+
+        @include media('lg') {
+            @include get-typo("h1");
+        }
+
+        text-transform: uppercase;
+        white-space: nowrap;
+        opacity: 0.5;
+        color: $color-light;
+
+        animation-name: terminal-name;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    &__mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+    }
+
+    &__laughing-man {
+        opacity: 0;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        padding: 25%;
+        position: absolute;
+        transform: translate(-47%, -56%);
+        pointer-events: none;
+    }
+
+    &__avatar:hover + &__laughing-man {
+        opacity: 1;
+        transition: opacity $transition-duration cubic-bezier(0.04, 1, 0.75, -0.76);
+    }
+
+    &__caution {
+        position: absolute;
+        left: auto;
+        left: 10%;
+        bottom: 10%;
+        width: 20%;
+    }
+
+    &__barcode {
+        position: absolute;
+        width: 13%;
+        height: 3%;
+        left: 36%;
+
+        &--1 {
+            top: 72.7%;
+        }
+
+        &--2 {
+            top: 77.8%;
+        }
+
+        &--3 {
+            top: 83%;
+        }
+    }
+
+    &__file {
+        position: absolute;
+        width: 14.7%;
+        height: 17%;
+        top: 72.7%;
+        left: 51.4%;
+        font-size: 30px;
+        line-height: 9px;
+        letter-spacing: 2px;
+
+        &::after {
+            animation-fill-mode: both;
+            animation-delay: $intro-window-delay;
+        }
+    }
+
+    &__code {
+        position: absolute;
+        width: 13.5%;
+        height: 5.5%;
+        top: 91.7%;
+        left: 51.4%;
+    }
+
+    &__linkedin {
+        position: absolute;
+        width: 8%;
+        height: 8%;
+        left: 39%;
+        top: 89%;
+        border-radius: 4px;
+
+        &:hover {
+            box-shadow: 3px 3px 9px 0px rgba(0, 0, 0, 0.6);
+        }
+
+        svg {
+            width: 100%;
+        }
+    }
+}
+
+@keyframes terminal-fade-1-loading {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: var(--fade-left-1);
+        bottom: var(--fade-bottom-1);
+    }
+}
+
+@keyframes terminal-fade-2-loading {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: var(--fade-left-2);
+        bottom: var(--fade-bottom-2);
+    }
+}
+
+@keyframes terminal-fade-rotate {
+    0% {
+        transform: rotate(-359.9deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes terminal-loading {
+    0% {
+        opacity: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: $object-opacity;
+        top: var(--terminal-top);
+        left: var(--terminal-left);
+        transform: translate(-50%, -50%) rotateX(var(--terminal-rotateX)) rotateY(var(--terminal-rotateY));
+    }
+}
+
+@keyframes terminal-name {
+    0% {
+        left: 150%;
+    }
+    100% {
+        left: -50%;
+    }
+}

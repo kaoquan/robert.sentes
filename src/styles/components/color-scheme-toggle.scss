@@ -1,0 +1,74 @@
+.color-scheme-toggle {
+    $toogle-size: 18px;
+
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+
+    &__slider {
+        cursor: pointer;
+
+        background-color: $color-bg;
+        border: 1px solid $color-text;
+        border-radius: $toogle-size;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        &::after {
+            content: '';
+            width: 50%;
+            height: 100%;
+            border-radius: $toogle-size;
+            background-color: $color-text;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translateX(0);
+            transition: transform $transition-duration;
+        }
+
+    }
+
+    &__checkbox {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+        position: fixed;
+    }
+
+    &__checkbox:checked + & &__slider::after {
+        transform: translateX(100%);
+    }
+
+
+    /* @media screen and (prefers-color-scheme: dark) {
+        &__slider::after {
+            transform: translateX(0);
+        }
+
+        &__checkbox:checked + & &__slider::after {
+            transform: translateX(100%);
+        }
+    }
+
+    @media screen and (prefers-color-scheme: light) {
+        &__slider::after {
+            transform: translateX(100%);
+        }
+
+        &__checkbox:checked + & &__slider::after {
+            transform: translateX(0);
+        }
+    } */
+
+    &__icon {
+        color: $color-text;
+        font-size: $toogle-size;
+        line-height: $toogle-size;
+        border-radius: $toogle-size;
+        padding: 2px;
+    }
+}

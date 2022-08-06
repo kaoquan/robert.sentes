@@ -1,0 +1,135 @@
+body,
+html {
+    font-family: 'Ubuntu', Arial, sans-serif;
+
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    font-style: normal;
+    @include get-typo("small-text");
+
+    @include media('lg') {
+        @include get-typo("text");
+    }
+}
+
+main {
+    min-height: 100%;
+    position: relative;
+    background: $color-bg;
+    color: $color-text;
+    transition: none;
+}
+
+* {
+    box-sizing: border-box;
+    transition: all $transition-duration, color 0.001s, font-size 0.001s, line-height 0.001s;
+    animation-fill-mode: backwards;
+
+    &::before,
+    &::after {
+        box-sizing: border-box;
+    }
+
+    &:focus {
+        outline: 2px solid $color-circuit;
+    }
+
+    &:active {
+        outline: 0;
+        text-decoration: none;
+    }
+}
+
+img,
+picture,
+video {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: $color-text;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+h1 {
+    @include get-typo("h2");
+
+    @include media('lg') {
+        @include get-typo("h1");
+    }
+}
+
+h2 {
+    @include get-typo("h3");
+
+    @include media('lg') {
+        @include get-typo("h2");
+    }
+}
+
+h3 {
+    @include get-typo("h4");
+
+    @include media('lg') {
+        @include get-typo("h3");
+    }
+}
+
+h4 {
+    @include get-typo("h5");
+
+    @include media('lg') {
+        @include get-typo("h4");
+    }
+}
+
+h5 {
+    @include get-typo("h6");
+
+    @include media('lg') {
+        @include get-typo("h5");
+    }
+}
+
+h6 {
+    @include get-typo("text");
+
+    @include media('lg') {
+        @include get-typo("h6");
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+p {
+    + h1,
+    + h2,
+    + h3,
+    + h4,
+    + h5,
+    + h6 {
+        margin-top: 30px;
+    }
+}

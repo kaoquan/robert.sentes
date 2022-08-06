@@ -1,0 +1,13 @@
+.freeze-toggle {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+
+    &:checked ~ .main-animation {
+        .freeze, .freeze::after {
+            animation-play-state: paused;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+.circuit-background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+
+    &__main-lines path {
+        animation-name: curcuit-background-main-lines;
+        animation-duration: $intro-circuit-background-duration;
+        animation-fill-mode: both;
+
+        stroke: $color-text;
+
+        &.circuit__lines {
+            stroke-width: $stroke-width-1;
+        }
+
+        &.circuit__contacts {
+            stroke-width: $stroke-width-1 + 2;
+        }
+    }
+
+    &__main-glow path {
+        animation-name: curcuit-background-main-glow;
+        animation-duration: $intro-circuit-background-duration;
+        animation-fill-mode: both;
+
+        stroke: $color-circuit;
+
+        &.circuit__lines {
+            stroke-width: $stroke-width-2;
+        }
+
+        &.circuit__contacts {
+            stroke-width: $stroke-width-2 + 2;
+        }
+    }
+
+    &__back-layer path {
+        animation-name: curcuit-background-back-layer;
+        animation-duration: $intro-circuit-background-duration;
+        animation-fill-mode: both;
+
+        stroke: $color-circuit;
+
+        transform: rotateX(-180deg) translateY(-100%);
+
+        &.circuit__lines {
+            stroke-width: $stroke-width-1;
+        }
+
+        &.circuit__contacts {
+            stroke-width: $stroke-width-1 + 2;
+        }
+    }
+}
+
+@keyframes curcuit-background-main-lines {
+    0%, 25%{
+        stroke-opacity: 0;
+    }
+    50% {
+        stroke-opacity: 0.8;
+    }
+    100% {
+        stroke-opacity: 0.4;
+    }
+}
+
+@keyframes curcuit-background-main-glow {
+    0%, 25% {
+        stroke-opacity: 0;
+    }
+    100% {
+        stroke-opacity: 0.6;
+    }
+}
+
+@keyframes curcuit-background-back-layer {
+    0% {
+        stroke-opacity: 0;
+    }
+    25% {
+        stroke-opacity: 0.8;
+    }
+    50%, 100% {
+        stroke-opacity: 0.4;
+    }
+}

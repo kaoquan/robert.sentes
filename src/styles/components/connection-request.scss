@@ -1,0 +1,68 @@
+.connection-request {
+    z-index: 1;
+    position: absolute;
+
+    animation-name: connection-request ;
+    animation-delay: $intro-server-delay;
+    animation-duration: $intro-server-duration;
+    animation-fill-mode: both;
+
+    transition: all $transition-duration, visibility 0.01s, color 0.01s, font-size 0.01s, line-height 0.01s;
+
+    &--sm {
+        visibility: visible;
+
+        top: calc(#{$server-y-sm} + #{$server-size-sm / 3});
+        left: $terminal-x-sm;
+        width: 85%;
+        height: calc(#{$terminal-y-sm - $server-y-sm });
+        transform: translate(-50%, 0)  rotateX(5deg);
+
+        @include media('md') {
+            top: calc(#{$server-y-sm} + #{$server-size-md / 3});
+        }
+    }
+
+    &--lg {
+        visibility: hidden;
+
+        top: $terminal-y-lg;
+        left: $terminal-x-lg;
+        width: calc(99% - #{$server-x-lg + $terminal-x-lg} - #{$server-size-lg / 3});
+        height: 85%;
+        transform: translate(0%, -55%) rotateX(10deg);
+    }
+
+    @include media('lg') {
+        &--sm {
+            visibility: hidden;
+        }
+
+        &--lg {
+            visibility: visible;
+        }
+    }
+
+    &__line {
+        stroke: $color-circuit;
+        stroke-width: $stroke-width-3;
+        stroke-opacity: $stroke-opacity;
+        stroke-linecap: round;
+    }
+    &__rectangle {
+        fill: $color-circuit;
+        fill-opacity: $stroke-opacity;
+    }
+}
+
+@keyframes connection-request  {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: $object-opacity;
+    }
+    100% {
+        opacity: $connection-opacity;
+    }
+}

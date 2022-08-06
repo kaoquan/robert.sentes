@@ -1,0 +1,160 @@
+.server {
+    --server-rorateX: -40deg;
+    --server-rorateY: 0deg;
+    z-index: 5;
+    position: absolute;
+    top: $server-y-sm;
+    right: $server-x-sm;
+    transform: translate(50%,-50%) rotateX(var(--server-rorateX)) rotateY(var(--server-rorateY));
+
+    width: 100%;
+    height: 100%;
+    max-width: $server-size-sm;
+    max-height: $server-size-sm;
+
+    animation-name: server-loading;
+    animation-delay: $intro-server-delay;
+    animation-duration: $intro-server-duration;
+
+    @include media('md') {
+        max-width: $server-size-md;
+        max-height: $server-size-md;
+    }
+
+    @include media('lg') {
+        --server-rorateX: 0deg;
+        --server-rorateY: -65deg;
+        top: $server-y-lg;
+        right: $server-x-lg;
+        max-width: $server-size-lg;
+        max-height: $server-size-lg;
+    }
+
+    &:hover {
+        transform: translate(50%,-50%)
+    }
+    &:hover  &__layer {
+        bottom: 0;
+        left: 0;
+        transform: scale(1);
+    }
+
+    &__layer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        animation-delay: $intro-server-delay + $intro-server-duration / 2;
+        animation-duration: $intro-server-duration / 2;
+
+        @for $layer from 1 to 5 {
+            &:nth-child(#{$layer}) {
+                --server-layer-#{$layer}-bottom: calc((5 - #{$layer}) * 4%);
+                --server-layer-#{$layer}-left: auto;
+                bottom: var(--server-layer-#{$layer}-bottom);
+                left: var(--server-layer-#{$layer}-left);
+                opacity: $layer * 0.2;
+                transform: scale(1.1 - ($layer * 0.02));
+
+                animation-name: server-loading-#{$layer};
+
+                @include media('lg') {
+                    --server-layer-#{$layer}-bottom: auto;
+                    --server-layer-#{$layer}-left: calc((5 - #{$layer}) * 4%);
+                }
+            }
+        }
+
+        &:nth-child(6) {
+            pointer-events: none;
+        }
+    }
+
+    &__circle {
+        fill: $color-text;
+    }
+
+    &__text {
+        fill: $color-text;
+    }
+
+    &__border {
+        stroke: $color-bg;
+        stroke-width: 2px;
+    }
+
+    &__rectangle {
+        fill: $color-bg;
+
+        &--hover:hover {
+            fill: $color-neon;
+        }
+    }
+
+    &__text-bg {
+        fill: $color-bg;
+    }
+
+    &__status {
+        fill: $color-laughing-man;
+    }
+
+    &__status-text {
+        fill: $color-light;
+    }
+
+    &__caution {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 18%;
+        width: 16%;
+    }
+
+    &__barcode {
+        position: absolute;
+        width: 10.5%;
+        height: 20px;
+        right: 2%;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $color-bg;
+    }
+
+    &__code {
+        position: absolute;
+        width: 10.5%;
+        height: 8%;
+        top: 45.5%;
+        left: 2%;
+        color: $color-text;
+    }
+}
+
+@keyframes server-loading {
+    0% {
+        opacity: 0;
+        transform: scale(0.1) translate(50%,-50%) rotateX(0deg) rotateY(0deg);
+    }
+    50%, 100% {
+        opacity: 1;
+        transform: scale(1) translate(50%,-50%) rotateX(var(--server-rorateX)) rotateY(var(--server-rorateY));
+    }
+    100% {
+        opacity: $object-opacity;
+    }
+}
+
+@for $layer from 1 to 5 {
+    @keyframes server-loading-#{$layer} {
+        0% {
+            bottom: 0;
+            left: 0;
+        }
+        100% {
+            bottom: var(--server-layer-#{$layer}-bottom);
+            left: var(--server-layer-#{$layer}-left);
+        }
+    }
+}

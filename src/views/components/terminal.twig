@@ -1,0 +1,34 @@
+<div class="terminal object object--on-top js-terminal">
+    {% import "svg/parts/terminal-fade.svg" as fade %}
+    <div class="terminal__fade-container-1">
+        {{ fade.display('terminal__fade-1 freeze') }}
+    </div>
+    <div class="terminal__fade-container-2">
+        {{ fade.display('terminal__fade-2 freeze') }}
+    </div>
+
+    {% include "svg/parts/terminal.svg" %}
+    {% include "svg/parts/terminal-mask.svg" %}
+    <label class="terminal__avatar js-avatar" for="freeze_toggle">
+        <h1 class="terminal__name freeze">Senteș Robert</h1>
+        <picture title="Portrait of myself">
+            <source srcset="img/kao.webp" type="image/webp">
+            <img src="img/kao.png" alt="Portrait of myself" width="210" height="252" />
+        </picture>
+    </label>
+
+    {% import "svg/parts/laughing_man.svg" as laughing_man %}
+    {{ laughing_man.display('terminal__laughing-man') }}
+
+    {% import "components/caution.twig" as caution %}
+    {{ caution.display('terminal__caution', 'tls1.3') }}
+
+    <div class="terminal__barcode terminal__barcode--1 barcode barcode--animate-1 barcode--medium barcode--dark freeze"></div>
+    <div class="terminal__barcode terminal__barcode--2 barcode barcode--animate-2 barcode--medium barcode--dark freeze"></div>
+    <div class="terminal__barcode terminal__barcode--3 barcode barcode--animate-3 barcode--medium barcode--dark freeze"></div>
+    <div class="terminal__file barcode barcode--animate-file-1 barcode--text barcode--small barcode--dark freeze"></div>
+    <div class="terminal__code code code--animate code--light freeze"></div>
+    <a class="terminal__linkedin js-linkedin" href="https://www.linkedin.com/in/robert-sentes/" target="_blank" title="LinkedIn Profile of Robert Senteș">
+        {% include "svg/logos/linkedin.svg" %}
+    </a>
+</div>

@@ -1,0 +1,8 @@
+@import "node_modules/normalize-scss/sass/normalize";
+@include normalize();
+
+@import "variables/**/*.scss";
+@import "mixins/**/*.scss";
+@import "global/**/*.scss";
+@import "components/**/*.scss";
+@import "pages/**/*.scss";

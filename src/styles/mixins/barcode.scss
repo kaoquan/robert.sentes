@@ -1,0 +1,39 @@
+@function generate-barcode ($length) {
+    $barcode: '';
+    @for $i from 1 to $length {
+        $barcode: $barcode + (random(10) - 1);
+    }
+    @return $barcode;
+}
+
+@mixin barcode($length) {
+    content: '#{generate-barcode($length)}';
+}
+
+@mixin barcode-keyframes($length, $steps) {
+    $keyframe: 0%;
+    $step: 100 / $steps;
+    @for $i from 0 to $steps {
+        #{$keyframe} {
+            @include barcode($length);
+        }
+        $keyframe: $keyframe + $step;
+    }
+}
+
+@mixin barcode-file-keyframes($length, $steps) {
+    $keyframe: 0%;
+    $step: 100 / $steps;
+    $length: $length / $steps;
+    @if($length % $steps) {
+        $length: $length + 1;
+    }
+    $barcode: '';
+    @for $i from 0 to $steps {
+        #{$keyframe} {
+            content: '#{$barcode}';
+        }
+        $barcode: $barcode + generate-barcode($length);
+        $keyframe: $keyframe + $step;
+    }
+}

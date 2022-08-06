@@ -1,0 +1,16 @@
+<div class="server object js-server">
+    {% import "svg/parts/server.svg" as server %}
+    {{ server.display('server__layer') }}
+    {{ server.display('server__layer') }}
+    {{ server.display('server__layer') }}
+    {{ server.display('server__layer') }}
+    {{ server.display('server__layer') }}
+
+    {% include "svg/parts/server-text.svg" %}
+
+    <div class="server__code code code--animate freeze"></div>
+    <div class="server__barcode barcode barcode--animate-3 barcode--medium freeze"></div>
+
+    {% import "components/caution.twig" as caution %}
+    {{ caution.display('server__caution', 'tls1.3') }}
+</div>

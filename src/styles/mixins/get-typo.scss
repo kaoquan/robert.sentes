@@ -1,0 +1,16 @@
+// mixin to run inside of for loop - creates typography classes
+@mixin get-typo($class-name) {
+    @if map-has-key($typography-classes, $class-name) {
+        $typography-class: map-get($typography-classes, $class-name);
+
+        @each $rule-name, $rule-value in $typography-class {
+            #{$rule-name}: #{$rule-value};
+        }
+    }
+
+    // If the key doesn't exist in the map
+    @else {
+        @warn "Unfortunately, no get-typo for `#{$class-name}`. "
+          + "Available typography classes are: #{map-keys($typography-classes)}.";
+    }
+}

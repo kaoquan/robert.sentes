@@ -1,0 +1,23 @@
+:root {
+    --inspiration-width: 350px;
+    --inspiration-height: 184px;
+    --inspiration-radius: 343px;
+    --inspiration-horizontal: 0;
+    --inspiration-vertical: 1;
+
+    @include media('md') {
+        --inspiration-width: 400px;
+        --inspiration-height: 210px;
+        --inspiration-radius: 392px;
+        --inspiration-horizontal: 0;
+        --inspiration-vertical: 1;
+    }
+
+    @include media('lg') {
+        --inspiration-width: 500px;
+        --inspiration-height: 262px;
+        --inspiration-radius: 933px;
+        --inspiration-horizontal: 1;
+        --inspiration-vertical: 0;
+    }
+}

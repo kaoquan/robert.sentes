@@ -1,0 +1,35 @@
+.server-racks {
+    z-index: 5;
+    position: absolute;
+    top: $server-racks-y-sm;
+    right: $server-x-sm;
+    opacity: $object-opacity;
+    transform: translate(50%, -50%) rotateY(-25deg);
+
+    animation-name: server-racks-loading;
+    animation-delay: $intro-server-delay + $intro-server-duration / 2;
+    animation-duration: $intro-server-duration / 2;
+
+    width: 100%;
+    max-width: $server-size-sm;
+
+    @include media('md') {
+        max-width:  $server-size-md;
+    }
+
+
+    @include media('lg') {
+        top: $server-racks-y-lg;
+        right: $server-x-lg;
+        max-width: $server-size-lg;
+    }
+}
+
+@keyframes server-racks-loading {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: $object-opacity;
+    }
+}

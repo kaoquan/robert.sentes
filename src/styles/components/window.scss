@@ -1,0 +1,62 @@
+.window {
+    position: absolute;
+
+    &__frame {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__background {
+        fill: $color-circuit;
+        fill-opacity: $fill-border-opacity;
+        stroke: $color-circuit;
+        stroke-width: $stroke-width-3;
+        stroke-opacity: $stroke-opacity;
+        stroke-linecap: round;
+    }
+
+    &__content {
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        &::before {
+            content: '';
+            background-color: $color-bg;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border: $stroke-width-3 solid $color-circuit;
+            opacity: $stroke-opacity;
+        }
+        & > * {
+            position: absolute;
+            top: $stroke-width-3;
+            left: $stroke-width-3;
+            bottom: $stroke-width-3;
+            right: $stroke-width-3;
+        }
+    }
+
+    &__scroll {
+        position: absolute;
+        top: $stroke-width-3 * 3;
+        left: $stroke-width-3 * 3;
+        bottom: $stroke-width-3 * 3;
+        right: $stroke-width-3 * 2;
+        padding-right: $stroke-width-3;
+
+        overflow-y: scroll;
+
+        @include scrollbar($stroke-width-3, $color-circuit);
+    }
+
+    &__rectangle {
+        stroke: $color-circuit;
+        stroke-width: $stroke-width-2;
+        stroke-opacity: $stroke-opacity;
+        stroke-linecap: round;
+    }
+}

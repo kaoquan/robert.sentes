@@ -1,0 +1,5 @@
+{% macro display(class) %}
+<svg width="0" height="0" viewBox="0 0 46 39" fill="none" xmlns="http://www.w3.org/2000/svg" class="{{ class }}__svg">
+<path d="M23 5L41 36H5L23 5Z" class="{{ class }}__path"/>
+</svg>
+{% endmacro %}

@@ -1,0 +1,8 @@
+{% macro display(class, text) %}
+<div class="caution {{ class }}">
+    {% include "svg/parts/caution.svg" %}
+    {% include "svg/parts/" ~ text ~ ".svg" %}
+    <div class="caution__code code code--animate code--dark freeze"></div>
+    <div class="caution__barcode barcode barcode--text barcode--small barcode--light freeze"></div>
+</div>
+{% endmacro %}

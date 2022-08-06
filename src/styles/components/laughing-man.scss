@@ -1,0 +1,28 @@
+.laughing-man{
+    &__bg {
+        /* fill: $color-text;
+
+        path {
+            fill: $color-text;
+        } */
+    }
+
+    &__face {
+
+    }
+
+    &__text {
+        will-change: transform;
+        transform-origin: 261px 261px;
+        animation: text-rotate 20s linear infinite;
+    }
+}
+
+@keyframes text-rotate {
+    0% {
+        transform: rotate(359.9deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

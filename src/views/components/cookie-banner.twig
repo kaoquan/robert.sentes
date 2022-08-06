@@ -1,0 +1,19 @@
+<div class="cookie-banner object js-cookie-banner">
+	{% include "svg/parts/cookie-banner.svg" %}
+	<div class="cookie-banner__content">
+		<div>I'd like to use Google Analytics cookies so I can understand how you use the website and make improvements.
+			<a href="https://developers.google.com/analytics/devguides/collection/gtagjs/cookie-usage" target="_blank" id="cookies-eu-more">Read more <i class="icon">open_in_new</i></a>
+		</div>
+		<div class="cookie-banner__options">
+			{% import "svg/parts/triangle.svg" as triangle %}
+			<button class="cookie-banner__button cookie-banner__button--accept object js-cookie-banner-accept" title="Accept">
+    			{{ triangle.display('cookie-banner__button') }}
+				<span class="cookie-banner__button__text">Accept</span>
+			</button>
+			<button class="cookie-banner__button cookie-banner__button--decline object js-cookie-banner-decline" title="Decline">
+    			{{ triangle.display('cookie-banner__button') }}
+				<span class="cookie-banner__button__text">Decline</span>
+			</button>
+		</div>
+	</div>
+</div>

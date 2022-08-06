@@ -1,0 +1,147 @@
+.window-design-inspiration {
+    $self: &;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform-origin: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 7;
+    opacity: 0;
+    outline: 0;
+    pointer-events: none;
+    cursor: default;
+
+    animation-name: inspiration-window-loading;
+    animation-delay: $intro-duration;
+    animation-duration: 0s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+        content: '';
+        background-color: $color-bg;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        opacity: 0.4;
+    }
+
+    &__image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        line-height: 0;
+    }
+
+    &__scene {
+        position: relative;
+        width: var(--inspiration-width);
+        max-width: 100%;
+        height: var(--inspiration-height);
+        perspective: $perspective;
+    }
+
+    &__carousel {
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform: translateZ(calc(var(--inspiration-radius) * -1));
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__slide {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        animation-duration: $transition-duration;
+        animation-fill-mode: both;
+    }
+
+    &__dot {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+        position: fixed;
+
+        @for $i from -2 to 3 {
+            &[value="#{$i}"]:checked {
+                ~ #{$self}__carousel {
+                    transform: translateZ(calc(var(--inspiration-radius) * -1)) rotateX(calc(#{$i * -30deg} * var(--inspiration-vertical))) rotateY(calc(#{$i * 30deg} * var(--inspiration-horizontal)));
+                }
+            }
+        }
+
+    }
+
+    @for $i from -2 to 3 {
+        &-#{$i + 3} {
+            transform: rotateX(calc(#{$i * -30deg} * var(--inspiration-vertical))) rotateY(calc(#{$i * 30deg} * var(--inspiration-horizontal))) translateZ(var(--inspiration-radius));
+        }
+    }
+
+    &:target {
+        opacity: 1;
+        pointer-events: all;
+        animation-duration: $transition-duration;
+
+        #{$self}__slide {
+            animation-name: inspiration-window-slide;
+        }
+
+        #{$self}-1 #{$self}__slide {
+            animation-delay: 1.5 * $transition-duration;
+        }
+
+        #{$self}-2 #{$self}__slide {
+            animation-delay: 2 * $transition-duration;
+        }
+
+        #{$self}-3 #{$self}__slide {
+            animation-delay: 1 * $transition-duration;
+        }
+
+        #{$self}-4 #{$self}__slide {
+            animation-delay: 2 * $transition-duration;
+        }
+
+        #{$self}-5 #{$self}__slide {
+            animation-delay: 2.5 * $transition-duration;
+        }
+    }
+}
+
+@keyframes inspiration-window-loading {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes inspiration-window-slide {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    20% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

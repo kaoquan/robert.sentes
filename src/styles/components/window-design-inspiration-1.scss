@@ -1,0 +1,13 @@
+.window-design-inspiration-1 {
+    width: 90%;
+    height: 90%;
+
+    &__content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 3% 11% 3% 3%;
+        height: 100%;
+        width: 100%;
+    }
+}

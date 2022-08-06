@@ -1,0 +1,11 @@
+
+{% block after_body %}
+<input type="checkbox" name="color_scheme" id="color_scheme_toggle" class="color-scheme-toggle__checkbox color-scheme js-color_scheme_toggle">
+{% endblock %}
+
+<div class="color-scheme-toggle object">
+    <label class="color-scheme-toggle__slider" for="color_scheme_toggle" title="Toggle between light and dark theme">
+        <i class="icon color-scheme-toggle__icon">light_mode</i>
+        <i class="icon color-scheme-toggle__icon">dark_mode</i>
+    </label>
+</div>

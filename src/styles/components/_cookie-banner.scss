@@ -1,0 +1,127 @@
+.cookie-banner {
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    max-width: 1000px;
+    padding: 5px 10px 13px;
+    transform: translate(-50%, 100%);
+
+    &--show {
+        transform: translate(-50%, 0%);
+
+        animation-name: cookie-banner-loading;
+        animation-duration: $transition-duration;
+    }
+
+    &__svg {
+        width: calc(100% - 20px);
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index: -1;
+    }
+
+    &__path {
+        fill: $color-bg;
+        fill-opacity: $fill-opacity;
+        stroke: $color-circuit;
+        stroke-width: $stroke-width-2;
+        stroke-opacity: $stroke-opacity;
+        stroke-linecap: round;
+    }
+
+    &__content {
+        min-height: 45px;
+        padding: 15px 10%;
+        @include get-typo("caption");
+        color: $color-text;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+    }
+
+    &__options {
+        display: flex;
+    }
+
+    &__button {
+        width: 40px;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+
+        &--accept {
+
+            &::after {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                border-width: $stroke-width-2;
+                border-top: 0;
+                border-right: 0;
+                border-style: solid;
+                border-color: $color-text;
+                height: 6px;
+                width: 10px;
+                content: "";
+                transform: translate(-50%, 0%) rotate(-45deg);
+            }
+        }
+
+        &--decline {
+            transform: rotate(180deg);
+
+            &::before,
+            &::after {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                border-left: $stroke-width-2 solid $color-text;
+                height:10px;
+                width: 0px;
+                content: "";
+                transform: translate(-50%, 0%) rotate(45deg);
+            }
+
+            &::after {
+                transform: translate(-50%, 0%) rotate(-45deg);
+            }
+        }
+
+        &__svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        &__path {
+            fill: $color-circuit;
+            stroke: $color-circuit;
+            stroke-width: $stroke-width-2;
+            stroke-opacity: $stroke-opacity;
+            stroke-linecap: round;
+        }
+
+        &__text {
+            display: none;
+        }
+    }
+}
+
+@keyframes cookie-banner-loading {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 100%);
+    }
+    100% {
+        opacity: $object-opacity;
+        transform: translate(-50%, 0%);
+    }
+}

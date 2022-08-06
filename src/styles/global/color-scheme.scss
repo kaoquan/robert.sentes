@@ -1,0 +1,58 @@
+:root {
+    --color-bg: #{$color-black};
+    --color-text: #{$color-white};
+    --color-circuit: #{$color-green};
+    --color-dark: #{$color-black};
+    --color-light: #{$color-white};
+    --color-link: #{$color-neon};
+}
+
+.color-scheme:checked ~ main,
+.color-scheme:checked ~ .cookie-banner,
+.color-scheme:checked ~ .color-scheme-toggle  {
+    --color-bg: #{$color-light-gray};
+    --color-text: #{$color-gray};
+    --color-circuit: #{$color-blue};
+    --color-dark: #{$color-gray};
+    --color-light: #{$color-white};
+    --color-link: #{$color-blue-1};
+}
+
+/* @media screen and (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #{$color-black};
+        --color-text: #{$color-white};
+        --color-circuit: #{$color-green};
+        --color-dark: #{$color-black};
+        --color-light: #{$color-white};
+    }
+
+    .color-scheme:checked ~ main,
+    .color-scheme:checked ~ .color-scheme-toggle  {
+        --color-bg: #{$color-light-gray};
+        --color-text: #{$color-gray};
+        --color-circuit: #{$color-blue};
+        --color-dark: #{$color-gray};
+        --color-light: #{$color-white};
+    }
+}
+
+@media screen and (prefers-color-scheme: light) {
+    :root {
+        --color-bg: #{$color-light-gray};
+        --color-text: #{$color-gray};
+        --color-circuit: #{$color-blue};
+        --color-dark: #{$color-gray};
+        --color-light: #{$color-white};
+    }
+
+    .color-scheme:checked ~ main,
+    .color-scheme:checked ~ .color-scheme-toggle  {
+        --color-bg: #{$color-black};
+        --color-text: #{$color-white};
+        --color-circuit: #{$color-green};
+        --color-dark: #{$color-black};
+        --color-light: #{$color-white};
+    }
+} */
+

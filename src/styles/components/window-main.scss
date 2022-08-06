@@ -1,0 +1,68 @@
+.window-main {
+    z-index: 6;
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform-origin: top right;
+    transform: translate(-50%, -50%);
+
+    animation-name: main-window-loading;
+    animation-delay: $intro-window-delay;
+    animation-duration: $intro-window-duration;
+    width: 95vw;
+    height: 60vh;
+
+    @include media('lg') {
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 55vw;
+    }
+
+    &__text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 3.5% 9% 5.5% 15%;
+        height: 100%;
+        width: 100%;
+
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    &__barcode {
+        position: absolute;
+        height: 15%;
+        width: 2%;
+        right: 3.7%;
+        top: 47%;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        color: $color-circuit;
+        opacity: $stroke-opacity;
+    }
+
+    &__code {
+        position: absolute;
+        width: 10%;
+        height: 20%;
+        top: 66.5%;
+        left: 3.2%;
+        background-color: $color-bg;
+        color: $color-circuit;
+        opacity: $stroke-opacity;
+    }
+}
+
+@keyframes main-window-loading {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.1);
+    }
+    100% {
+        opacity: $object-opacity;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

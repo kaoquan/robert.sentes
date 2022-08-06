@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, width=device-width, height=device-height" />
+    <meta name="google-site-verification" content="fqLv5tn-ggs8VxwqPip-1EkH891M8ehexKUBohXlIrw" />
+    <title>Senteș Robert - personal website</title>
+    <meta name="description" content="Personal website of web developer Senteș Robert. Fun project inspired by Ghost in the Shell to create a static web page with pure HTML and CSS."/>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <meta name="theme-color" content="#0D1321">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined&family=Libre+Barcode+39&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css?v=1.0.5">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56QXFCT7QR"></script>
+
+    <script src="scripts.js?v=1.0.2"></script>
+</head>
+<body class="no-js">
+    {% block after_body %}{% endblock %}
+    {% include "components/color-scheme-toggle.twig" %}
+    {% block content %}{% endblock %}
+
+    {% include "components/cookie-banner.twig" %}
+</body>
+</html>

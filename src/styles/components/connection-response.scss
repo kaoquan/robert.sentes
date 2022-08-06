@@ -1,0 +1,47 @@
+.connection-response {
+    z-index: 1;
+    position: absolute;
+
+    top: $server-y-sm;
+    right: $server-x-sm;
+
+    width: 60%;
+    height: 20%;
+
+    transform: translate(6%, -35%) rotateX(10deg);
+
+    animation-name: connection-response ;
+    animation-delay: $intro-window-delay;
+    animation-duration: $intro-window-duration;
+    animation-fill-mode: both;
+
+    @include media('lg') {
+        top: $server-y-lg;
+        right: $server-x-lg;
+        width: 40%;
+        height: 40%;
+    }
+
+    &__line {
+        stroke: $color-circuit;
+        stroke-width: $stroke-width-3;
+        stroke-opacity: $stroke-opacity;
+        stroke-linecap: round;
+    }
+    &__rectangle {
+        fill: $color-circuit;
+        fill-opacity: $stroke-opacity;
+    }
+}
+
+@keyframes connection-response  {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: $object-opacity;
+    }
+    100% {
+        opacity: $connection-opacity;
+    }
+}

@@ -1,0 +1,27 @@
+{% extends "components/layout.twig" %}
+
+{% block after_body %}
+<input type="checkbox" name="freeze" id="freeze_toggle" class="freeze-toggle">
+{% endblock %}
+
+{% block content %}
+<main class="main-animation">
+    <div class="main-animation__zoom">
+        {% include "components/background-circuit.twig" %}
+        {% include "components/foreground-circuit.twig" %}
+        {% include "components/circuit-mask.twig" %}
+        {% include "components/chip.twig" %}
+    </div>
+
+    {% include "components/terminal.twig" %}
+    {% include "svg/parts/connection-request-sm.svg" %}
+    {% include "svg/parts/connection-request-lg.svg" %}
+    {% include "components/server.twig" %}
+    {% include "svg/parts/connection-server.svg" %}
+    {% include "components/server-racks.twig" %}
+    {% include "svg/parts/connection-response.svg" %}
+
+    {% include "components/window-main.twig" %}
+    {% include "components/window-design-inspiration.twig" %}
+</main>
+{% endblock %}

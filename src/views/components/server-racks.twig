@@ -1,0 +1,17 @@
+<div class="server-racks object">
+    {% import "svg/parts/server-rack.svg" as rack %}
+    {% set kaoquan = [
+            {"letter": "k", "morse": "-.-"},
+            {"letter": "a", "morse": ".-"},
+            {"letter": "o", "morse": "---"},
+            {"letter": "q", "morse": "--.-"},
+            {"letter": "u", "morse": "..-"},
+            {"letter": "a", "morse": ".-"},
+            {"letter": "n", "morse": "-."}
+        ]
+    %}
+    {% for item in kaoquan %}
+        {{$item}}
+        {{ rack.display(item.letter, item.morse) }}
+    {% endfor %}
+</div>

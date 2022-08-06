@@ -1,0 +1,110 @@
+.server-rack {
+    margin-top: $stroke-width-3;
+    position: relative;
+    width: 100%;
+
+    @include media('lg') {
+        margin-top: $stroke-width-3 * 2;
+    }
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &__text {
+        @include get-typo('h3');
+        fill: $color-circuit;
+    }
+
+    &__rectangle {
+        stroke: $color-circuit;
+        stroke-width: $stroke-width-3;
+        stroke-opacity: $stroke-opacity;
+        stroke-linecap: round;
+        fill: $color-circuit;
+        fill-opacity: $fill-border-opacity;
+    }
+
+    &__circle {
+        stroke: $color-circuit;
+        stroke-width: $stroke-width-3;
+        stroke-opacity: $stroke-opacity;
+        stroke-linecap: round;
+        fill: $color-circuit;
+        fill-opacity: 0;
+        animation-iteration-count: infinite;
+
+        &--power {
+            fill-opacity: $fill-opacity;
+        }
+    }
+
+    $kaoquan: (
+        "k": "-.- ",
+        "a": ".- ",
+        "o": "--- ",
+        "q": "--.- ",
+        "u": "..- ",
+        "n": "-. ",
+    );
+
+    @each $letter, $value in $kaoquan {
+        $length: str-length($value);
+        $keyframe: 0%;
+        $pulses: 0;
+
+        @for $i from 0 to $length {
+            $code: str-slice($value, $i + 1, $i + 1);
+
+            @if $code == '.' {
+                $pulses: $pulses + 2;
+            }
+            @if $code == '-' {
+                $pulses: $pulses + 4;
+            }
+            @if $code == ' ' {
+                $pulses: $pulses + 3;
+            }
+        }
+
+        $pulse: 100% / $pulses;
+
+        &--#{$letter} &__circle--status {
+            animation-name: server-rack-#{$letter};
+            animation-duration: #{$pulses / 6}s;
+        }
+
+        @keyframes server-rack-#{$letter} {
+            @for $i from 0 to $length {
+                $code: str-slice($value, $i + 1, $i + 1);
+
+                @if $code == '.' {
+                    #{$keyframe} {
+                        fill-opacity: 0;
+                    }
+                    $keyframe: $keyframe + $pulse;
+                    #{$keyframe} {
+                        fill-opacity: $fill-opacity;
+                    }
+                    $keyframe: $keyframe + $pulse;
+                }
+                @if $code == '-' {
+                    #{$keyframe} {
+                        fill-opacity: 0;
+                    }
+                    $keyframe: $keyframe + $pulse * 3;
+                    #{$keyframe} {
+                        fill-opacity: $fill-opacity;
+                    }
+                    $keyframe: $keyframe + $pulse;
+                }
+                @if $code == ' ' {
+                    #{$keyframe} {
+                        fill-opacity: 0;
+                    }
+                    $keyframe: $keyframe + $pulse * 3;
+                }
+            }
+        }
+    }
+}
