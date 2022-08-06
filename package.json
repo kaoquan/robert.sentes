@@ -1,0 +1,38 @@
+{
+  "name": "robert.sentes.eu",
+  "version": "1.0.0",
+  "description": "Personal website of Robert Sentes",
+  "private": true,
+  "main": "gulpfile.js",
+  "scripts": {
+    "watch": "gulp watch",
+    "build": "gulp",
+    "publish": "gulp publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaoquan/robert.sentes.git"
+  },
+  "author": "Robert Sentes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaoquan/robert.sentes/issues"
+  },
+  "homepage": "https://github.com/kaoquan/robert.sentes#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-copy": "^4.0.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-minify-inline": "^1.1.0",
+    "gulp-nunjucks": "^5.1.0",
+    "gulp-sass": "^4.1.1",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-sitemap": "^8.0.0",
+    "gulp-uglify": "^3.0.2",
+    "normalize-scss": "^7.0.1"
+  }
+}
