@@ -8,6 +8,7 @@ $color-link: var(--color-link);
 $transition-duration: 0.3s;
 
 $perspective: 200vh;
+$depth: -$perspective / 2;
 
 $stroke-width-1: 1px;
 $stroke-width-2: 3px;

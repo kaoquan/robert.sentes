@@ -1,10 +1,12 @@
 .window-main {
+    --window-main-rotateX: 10deg;
+    --window-main-rotateY: 0deg;
     z-index: 6;
     position: absolute;
     top: 43%;
     left: 50%;
     transform-origin: top right;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotateX(var(--window-main-rotateX)) rotateY(var(--window-main-rotateY));
 
     animation-name: main-window-loading;
     animation-delay: $intro-window-delay;
@@ -13,8 +15,9 @@
     height: 60vh;
 
     @include media('lg') {
+        --window-main-rotateX: 0deg;
+        --window-main-rotateY: -5deg;
         top: 50%;
-        transform: translate(-50%, -50%);
         width: 55vw;
     }
 
@@ -28,7 +31,7 @@
 
         svg {
             display: inline-block;
-            vertical-align: middle;
+            vertical-align: top;
         }
     }
 
@@ -59,10 +62,10 @@
 @keyframes main-window-loading {
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.1);
+        transform: translate(-50%, -50%) scale(0.1) rotateX(var(--window-main-rotateX)) rotateY(var(--window-main-rotateY));
     }
     100% {
         opacity: $object-opacity;
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1) rotateX(var(--window-main-rotateX)) rotateY(var(--window-main-rotateY));
     }
 }

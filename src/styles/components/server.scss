@@ -5,7 +5,7 @@
     position: absolute;
     top: $server-y-sm;
     right: $server-x-sm;
-    transform: translate(50%,-50%) rotateX(var(--server-rorateX)) rotateY(var(--server-rorateY));
+    transform: translate(50%, -50%) rotateX(var(--server-rorateX)) rotateY(var(--server-rorateY));
 
     width: 100%;
     height: 100%;
@@ -15,6 +15,10 @@
     animation-name: server-loading;
     animation-delay: $intro-server-delay;
     animation-duration: $intro-server-duration;
+
+    transform-style: preserve-3d;
+    perspective: $perspective;
+    perspective-origin: top;
 
     @include media('md') {
         max-width: $server-size-md;
@@ -26,17 +30,18 @@
         --server-rorateY: -65deg;
         top: $server-y-lg;
         right: $server-x-lg;
+
         max-width: $server-size-lg;
         max-height: $server-size-lg;
+
+        perspective-origin: right;
     }
 
     &:hover {
-        transform: translate(50%,-50%)
+        transform: translate(50%, -50%)
     }
     &:hover  &__layer {
-        bottom: 0;
-        left: 0;
-        transform: scale(1);
+        transform: translateZ(0) scale(1);
     }
 
     &__layer {
@@ -48,21 +53,12 @@
         animation-delay: $intro-server-delay + $intro-server-duration / 2;
         animation-duration: $intro-server-duration / 2;
 
-        @for $layer from 1 to 5 {
+        @for $layer from 1 to 6 {
             &:nth-child(#{$layer}) {
-                --server-layer-#{$layer}-bottom: calc((5 - #{$layer}) * 4%);
-                --server-layer-#{$layer}-left: auto;
-                bottom: var(--server-layer-#{$layer}-bottom);
-                left: var(--server-layer-#{$layer}-left);
                 opacity: $layer * 0.2;
-                transform: scale(1.1 - ($layer * 0.02));
+                transform: translateZ((5 - $layer) * $depth / 8) scale(1.5 - ($layer * 0.1));
 
                 animation-name: server-loading-#{$layer};
-
-                @include media('lg') {
-                    --server-layer-#{$layer}-bottom: auto;
-                    --server-layer-#{$layer}-left: calc((5 - #{$layer}) * 4%);
-                }
             }
         }
 
@@ -135,26 +131,24 @@
 @keyframes server-loading {
     0% {
         opacity: 0;
-        transform: scale(0.1) translate(50%,-50%) rotateX(0deg) rotateY(0deg);
+        transform: scale(0.1) translate(50%, -50%) rotateX(0deg) rotateY(0deg);
     }
     50%, 100% {
         opacity: 1;
-        transform: scale(1) translate(50%,-50%) rotateX(var(--server-rorateX)) rotateY(var(--server-rorateY));
+        transform: scale(1) translate(50%, -50%) rotateX(var(--server-rorateX)) rotateY(var(--server-rorateY));
     }
     100% {
         opacity: $object-opacity;
     }
 }
 
-@for $layer from 1 to 5 {
+@for $layer from 1 to 6 {
     @keyframes server-loading-#{$layer} {
         0% {
-            bottom: 0;
-            left: 0;
+            transform: translateZ(0) scale(1);
         }
         100% {
-            bottom: var(--server-layer-#{$layer}-bottom);
-            left: var(--server-layer-#{$layer}-left);
+            transform: translateZ((5 - $layer) * $depth / 8) scale(1.5 - ($layer * 0.1));
         }
     }
 }
